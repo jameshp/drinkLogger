@@ -1,0 +1,78 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/paper_elements/paper_input.html">
+<link rel="import" href="../../packages/paper_elements/paper_shadow.html">
+<link rel="import" href="../../packages/paper_elements/paper_item.html">
+<link rel="import" href="../../packages/paper_elements/paper_icon_button.html">
+<link rel="import" href="../../packages/core_elements/core_collapse.html">
+<link rel="import" href="../../packages/core_elements/core_ajax_dart.html">
+<link rel="import" href="../../packages/core_elements/core_media_query.html">
+<link rel="import" href="./drink_element.html">
+
+<polymer-element name="drink-list" attributes="url">
+  <template>
+    <style>
+      :host {
+        display: block;
+        position: relative;
+        background-color: white;
+        padding: 0px;
+        margin:0px;
+        width: 100%;
+      }
+      .list{
+        margin-left:20px;
+        margin-right:20px;
+        margin-bottom:15px;
+        margin-top:15px;
+      }
+      .list-item {
+        margin: 0px;
+        padding: 10px;
+        width: 100%;
+      }
+      
+       .phone-list{
+        margin-left:0px;
+        margin-right:0px;
+        margin-bottom:15px;
+        margin-top:15px;
+      }
+      .phone-list-item {
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+      }
+    </style>
+      
+      <!-- <core-ajax-dart id="ajax" auto url="smoothies.json" handleAs="json" on-core-response="{{ingredientsLoaded}}"></core-ajax-dart> -->
+      <core-media-query query="max-width: 640px" queryMatches="{{phoneScreen}}"></core-media-query>
+      
+      <paper-item>Mein Log:  </paper-item>
+      <div layout center-justified vertical>
+        
+        <template repeat="{{d in drinks}}">
+          <paper-shadow z="1" auto-vertical class="{{(phoneScreen==true) ? 'phone-list':'list' }}" >
+             <drink-element drink={{d}}> </drink-element>
+             <!--
+             <paper-item  class="{{(phoneScreen==true) ? 'phone-list-item':'list-item' }}" on-click="{{editItem}}">
+              
+              
+              {{d.type}}
+              {{d.count}}
+              {{d.consumptionDate}}
+              {{d.notes}}  
+              
+            </paper-item>
+            --> 
+           </paper-shadow>        
+        </template>
+        
+    
+      </div>
+        
+   
+    
+  </template>
+  <script type="application/dart" src="drink_list.dart"></script>
+</polymer-element>

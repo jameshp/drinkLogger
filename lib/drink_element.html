@@ -1,0 +1,61 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/paper_elements/paper_input.html">
+<link rel="import" href="../../packages/paper_elements/paper_shadow.html">
+<link rel="import" href="../../packages/paper_elements/paper_item.html">
+<link rel="import" href="../../packages/paper_elements/paper_icon_button.html">
+<link rel="import" href="../../packages/core_elements/core_collapse.html">
+<link rel="import" href="../../packages/core_elements/core_ajax_dart.html">
+<link rel="import" href="../../packages/core_elements/core_media_query.html">
+
+<polymer-element name="drink-element" attributes="drink editing">
+  <template>
+    <style>
+      :host {
+        display: block;
+        position: relative;
+        background-color: white;
+        padding: 0px;
+        margin:0px;
+        width: 100%;
+      }
+      .list-item {
+        margin: 0px;
+        padding: 10px;
+        width: 100%;
+      }
+
+      .phone-list-item {
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+      }
+    </style>
+       <!-- while not editing - show item as simple list item -->
+       <template if="{{!editing}}">
+          <paper-shadow z="1" auto-vertical class="{{(phoneScreen==true) ? 'phone-list':'list' }}" >
+             <paper-item  class="{{(phoneScreen==true) ? 'phone-list-item':'list-item' }}" on-tap="{{editItem}}">
+              {{drink.type}}
+              {{drink.count}}
+              {{drink.consumptionDate}}
+              {{drink.notes}}  
+             </paper-item>    
+           </paper-shadow>        
+        </template>
+
+        <template if="{{editing}}">
+          <paper-shadow z="1" auto-vertical class="{{(phoneScreen==true) ? 'phone-list':'list' }}" >
+             <paper-item  class="{{(phoneScreen==true) ? 'phone-list-item':'list-item' }}" on-tap="{{editItem}}">
+              EDIT MODE!!!
+              {{drink.type}}
+              {{drink.count}}
+              {{drink.consumptionDate}}
+              {{drink.notes}}  
+             </paper-item>    
+           </paper-shadow>        
+        </template>
+   
+    
+  </template>
+  <script type="application/dart" src="drink_element.dart"></script>
+</polymer-element>

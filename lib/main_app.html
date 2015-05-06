@@ -8,6 +8,7 @@
 <link rel="import" href="../../packages/paper_elements/paper_input.html">
 <link rel="import" href="../../packages/core_elements/core_scaffold.html">
 <link rel="import" href="../../packages/core_elements/core_item.html">
+<link rel="import" href="../../packages/paper_elements/paper_fab.html">
 <link rel="import" href="./drink_list.html">
 
 <polymer-element name="main-app">
@@ -32,7 +33,11 @@
           <core-item icon="settings" label="item2"></core-item>
         </core-menu>
       </core-header-panel>
-      <div tool>Drink Logger</div>
+      <div tool>Drink Logger
+        <paper-fab icon="add"></paper-fab>
+      </div>
+      
+      
       <div>Main content goes here...
         <drink-list url="drinks.json">asfdas</drink-list>
       </div>
